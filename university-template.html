@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Excellence - Premier Academic Institution</title>
+    <meta name="description" content="University of Excellence - Premier Academic Institution powered by Drupal 11">
+    <meta name="author" content="University of Excellence">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --university-primary: #1e3a8a;
+            --university-secondary: #b91c1c;
+            --university-gold: #d97706;
+            --university-cream: #fef7ed;
+            --university-dark: #1f2937;
+            --university-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--university-dark);
+        }
+
+        .display-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .navbar {
+            background: rgba(30, 58, 138, 0.9) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-slider {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .hero-slide {
+            background: linear-gradient(45deg, rgba(30, 58, 138, 0.8), rgba(185, 28, 28, 0.6));
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-slide.slide-2 {
+            background: linear-gradient(45deg, rgba(67, 56, 202, 0.8), rgba(139, 69, 19, 0.6));
+        }
+
+        .hero-slide.slide-3 {
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.8), rgba(30, 58, 138, 0.6));
+        }
+
+        .stats-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--university-primary);
+        }
+
+        .about-section {
+            background: #f1f5f9;
+            padding: 80px 0;
+        }
+
+        .programs-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-section {
+            background: #f1f5f9;
+            padding: 80px 0;
+        }
+
+        .footer {
+            background: var(--university-dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .dropdown-menu {
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .stats-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                🎓 University of Excellence
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown">
+                            Programs
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#programs">All Programs</a></li>
+                            <li><a class="dropdown-item" href="#">Undergraduate</a></li>
+                            <li><a class="dropdown-item" href="#">Graduate</a></li>
+                            <li><a class="dropdown-item" href="#">Online Learning</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="admissionsDropdown" role="button" data-bs-toggle="dropdown">
+                            Admissions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#admissions">Admissions Info</a></li>
+                            <li><a class="dropdown-item" href="#">Apply Now</a></li>
+                            <li><a class="dropdown-item" href="#">Requirements</a></li>
+                            <li><a class="dropdown-item" href="#">Financial Aid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section id="home">
+        <div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active">
+                    <div class="hero-slide">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 text-center fade-in">
+                                    <h1 class="display-1 fw-bold mb-4">Excellence in Education</h1>
+                                    <p class="lead mb-5">Shaping tomorrow's leaders through innovative learning, groundbreaking research, and transformative experiences.</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                        <button class="btn btn-primary btn-lg px-4 py-3">Explore Programs</button>
+                                        <button class="btn btn-outline-light btn-lg px-4 py-3">Virtual Tour</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="hero-slide slide-2">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 text-center">
+                                    <h1 class="display-1 fw-bold mb-4">Innovation & Research</h1>
+                                    <p class="lead mb-5">Pioneering breakthrough discoveries and fostering the next generation of innovators and scholars.</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                        <button class="btn btn-primary btn-lg px-4 py-3">Explore Programs</button>
+                                        <button class="btn btn-outline-light btn-lg px-4 py-3">Virtual Tour</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="hero-slide slide-3">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 text-center">
+                                    <h1 class="display-1 fw-bold mb-4">Global Community</h1>
+                                    <p class="lead mb-5">Building bridges across cultures and creating opportunities for students from around the world.</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                        <button class="btn btn-primary btn-lg px-4 py-3">Explore Programs</button>
+                                        <button class="btn btn-outline-light btn-lg px-4 py-3">Virtual Tour</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="stats-number">25,000+</div>
+                    <p class="text-muted">Students</p>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="stats-number">1,200+</div>
+                    <p class="text-muted">Faculty</p>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="stats-number">150+</div>
+                    <p class="text-muted">Programs</p>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="stats-number">200+</div>
+                    <p class="text-muted">Countries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="display-4 fw-bold text-primary mb-4">About Our University</h2>
+                    <p class="lead mb-4">
+                        For over a century, the University of Excellence has been at the forefront of higher education, 
+                        pioneering innovative teaching methods and conducting groundbreaking research that shapes our world.
+                    </p>
+                    <p class="lead mb-5">
+                        Our commitment to academic excellence, combined with our dedication to fostering critical thinking 
+                        and creativity, has produced generations of leaders, innovators, and change-makers.
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                                    🏆
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Excellence</h6>
+                                    <small class="text-muted">Academic Achievement</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                                    🌍
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Global</h6>
+                                    <small class="text-muted">International Reach</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="University Campus" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-primary mb-4">Academic Programs</h2>
+                <p class="lead text-muted">Discover world-class programs designed to prepare you for tomorrow's challenges</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">💻</div>
+                        <h4 class="fw-bold text-primary mb-3">Engineering & Technology</h4>
+                        <p class="mb-4">Cutting-edge programs in computer science, electrical engineering, and emerging technologies that prepare students for the digital future.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> Computer Science</li>
+                            <li><span class="text-success">✓</span> Electrical Engineering</li>
+                            <li><span class="text-success">✓</span> Data Science</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">🏥</div>
+                        <h4 class="fw-bold text-primary mb-3">Health Sciences</h4>
+                        <p class="mb-4">Comprehensive healthcare programs that combine rigorous academic training with hands-on clinical experience in state-of-the-art facilities.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> Medicine</li>
+                            <li><span class="text-success">✓</span> Nursing</li>
+                            <li><span class="text-success">✓</span> Public Health</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">💼</div>
+                        <h4 class="fw-bold text-primary mb-3">Business & Management</h4>
+                        <p class="mb-4">Dynamic business programs that develop entrepreneurial thinking and leadership skills for the global marketplace.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> MBA Programs</li>
+                            <li><span class="text-success">✓</span> Finance</li>
+                            <li><span class="text-success">✓</span> Marketing</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">🎨</div>
+                        <h4 class="fw-bold text-primary mb-3">Arts & Humanities</h4>
+                        <p class="mb-4">Rich programs in literature, philosophy, history, and fine arts that cultivate critical thinking and creative expression.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> Literature</li>
+                            <li><span class="text-success">✓</span> Philosophy</li>
+                            <li><span class="text-success">✓</span> Fine Arts</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">📊</div>
+                        <h4 class="fw-bold text-primary mb-3">Social Sciences</h4>
+                        <p class="mb-4">Interdisciplinary programs that examine human behavior, society, and culture through multiple lenses and methodologies.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> Psychology</li>
+                            <li><span class="text-success">✓</span> Sociology</li>
+                            <li><span class="text-success">✓</span> Political Science</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card">
+                        <div class="program-icon">🧪</div>
+                        <h4 class="fw-bold text-primary mb-3">Natural Sciences</h4>
+                        <p class="mb-4">Rigorous scientific programs that combine theoretical knowledge with practical research experience in modern laboratories.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><span class="text-success">✓</span> Biology</li>
+                            <li><span class="text-success">✓</span> Chemistry</li>
+                            <li><span class="text-success">✓</span> Physics</li>
+                        </ul>
+                        <a href="#" class="text-primary fw-semibold text-decoration-none">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="admissions" class="faq-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-primary mb-4">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Everything you need to know about joining our university community</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What are the admission requirements?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Admission requirements vary by program, but generally include: Completed application form with personal statement, Official transcripts from previous institutions, Standardized test scores (SAT, ACT, GRE, GMAT as applicable), Letters of recommendation from academic or professional references, English proficiency test scores for international students. Visit our admissions office or schedule a consultation to discuss specific program requirements.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What financial aid options are available?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer various financial aid options including merit-based scholarships, need-based grants, work-study programs, and federal student loans. Our financial aid office works with students to create personalized funding packages to make education accessible and affordable.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What housing options are available for students?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We provide on-campus residence halls, apartment-style housing, and assistance with off-campus housing options. All first-year students are guaranteed on-campus housing, and upperclass students have priority registration for campus housing.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What support services are available for students?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our comprehensive support services include academic tutoring centers, career counseling, mental health services, disability support services, international student services, and peer mentoring programs to ensure student success.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    How can I schedule a campus visit?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Campus visits can be scheduled through our admissions office. We offer guided tours, information sessions, and opportunities to meet with faculty and current students. Virtual tours are also available for those unable to visit in person.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="fw-bold mb-4">🎓 University of Excellence</h4>
+                    <p class="text-light mb-4">
+                        Empowering minds, transforming lives, and shaping the future through 
+                        excellence in education, research, and service to humanity.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light">📘</a>
+                        <a href="#" class="text-light">🐦</a>
+                        <a href="#" class="text-light">📷</a>
+                        <a href="#" class="text-light">💼</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-semibold mb-3">Academics</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Undergraduate</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Graduate</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Doctoral</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Online Programs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-semibold mb-3">Campus Life</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Student Organizations</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Athletics</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Housing</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Dining</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-semibold mb-3">Contact</h5>
+                    <ul class="list-unstyled text-light">
+                        <li class="mb-2">📍 123 University Ave<br>Excellence City, EX 12345</li>
+                        <li class="mb-2">📞 (555) 123-4567</li>
+                        <li class="mb-2">✉️ info@university.edu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-2 mb-md-0">
+                    <p class="text-light mb-0">&copy; 2024 University of Excellence. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-light mb-0">
+                        Powered by Drupal 11 | 
+                        <a href="#" class="text-light text-decoration-none">Privacy Policy</a> | 
+                        <a href="#" class="text-light text-decoration-none">Terms of Use</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(30, 58, 138, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(30, 58, 138, 0.9)';
+            }
+        });
+    </script>
+</body>
+</html>
