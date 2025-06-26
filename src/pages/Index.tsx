@@ -503,7 +503,7 @@ const Index = () => {
               <ul className="list-unstyled">
                 <li className="mb-2">
                   <i className="bi bi-geo-alt me-2"></i>
-                  123 University Ave<br>
+                  123 University Ave<br />
                   Excellence City, EX 12345
                 </li>
                 <li className="mb-2">
