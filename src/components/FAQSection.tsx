@@ -1,5 +1,11 @@
 
 import React from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FAQSection = () => {
   const faqs = [
@@ -9,19 +15,19 @@ const FAQSection = () => {
     },
     {
       question: 'What financial aid options are available?',
-      answer: ''
+      answer: 'We offer various financial aid options including merit-based scholarships, need-based grants, work-study programs, and federal student loans. Our financial aid office works with students to create personalized funding packages to make education accessible and affordable.'
     },
     {
       question: 'What housing options are available for students?',
-      answer: ''
+      answer: 'We provide on-campus residence halls, apartment-style housing, and assistance with off-campus housing options. All first-year students are guaranteed on-campus housing, and upperclass students have priority registration for campus housing.'
     },
     {
       question: 'What support services are available for students?',
-      answer: ''
+      answer: 'Our comprehensive support services include academic tutoring centers, career counseling, mental health services, disability support services, international student services, and peer mentoring programs to ensure student success.'
     },
     {
       question: 'How can I schedule a campus visit?',
-      answer: ''
+      answer: 'Campus visits can be scheduled through our admissions office. We offer guided tours, information sessions, and opportunities to meet with faculty and current students. Virtual tours are also available for those unable to visit in person.'
     }
   ];
 
@@ -33,22 +39,19 @@ const FAQSection = () => {
           <p className="text-xl text-gray-600">Everything you need to know about joining our university community</p>
         </div>
         
-        <div className="max-w-4xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow">
-              <button className="w-full text-left p-6 focus:outline-none">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-blue-900">{faq.question}</h3>
-                  <span className="text-blue-600">+</span>
-                </div>
-              </button>
-              {faq.answer && (
-                <div className="px-6 pb-6">
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg shadow">
+                <AccordionTrigger className="px-6 py-4 text-left text-lg font-semibold text-blue-900 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
                   <p className="text-gray-700">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
