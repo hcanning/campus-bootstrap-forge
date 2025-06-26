@@ -6,11 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/campus-bootstrap-forge' : '/',
-  server: {
-    host: "::",
-    port: 8080,
-  },
+  base: "/campus-bootstrap-forge",
   plugins: [
     react(),
     mode === 'development' &&
